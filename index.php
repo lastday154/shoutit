@@ -1,3 +1,4 @@
+<?php require_once("database.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,15 +12,13 @@
 		</header>
 		<div id="shouts">
 				<ul>
-					<li class="shout"><span>10:15PM - </span>Brad: Hey what are you guys up to? </li>
-					<li class="shout"><span>10:15PM - </span>Brad: Hey what are you guys up to? </li>
-					<li class="shout"><span>10:15PM - </span>Brad: Hey what are you guys up to? </li>
-					<li class="shout"><span>10:15PM - </span>Brad: Hey what are you guys up to? </li>
-					<li class="shout"><span>10:15PM - </span>Brad: Hey what are you guys up to? </li>
-					<li class="shout"><span>10:15PM - </span>Brad: Hey what are you guys up to? </li>
+					<?php echo get_shouts(); ?>
 				</ul>
 		</div>
 		<div id="input">
+				<?php if (isset($_GET['error'])) : ?>
+					<div class="error"><?php echo $_GET['error']; ?></div>
+				<?php endif; ?>
 				<form method="post" action="process.php">
 					<input type="text" name="user" placeholder="Enter Your Name">
 					<input type="text" name="message" placeholder="Enter A Message">
